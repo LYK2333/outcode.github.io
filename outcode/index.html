@@ -1,0 +1,199 @@
+<html lang="zh_CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport"
+            content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,minimal-ui,viewport-fit=cover">
+        <meta name="apple-mobile/src-web-app-capable" content="yes">
+        <meta name="apple-mobile/src-web-app-status-bar-style" content="black">
+        <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+        <meta http-equiv="Pragma" content="no-cache">
+        <meta http-equiv="Expires" content="0">
+        <title>外出登记二维码</title>
+        <link href="1.css" rel="preload" as="style">
+        <link href="2.css" rel="preload" as="style">
+        <link href="3.css" rel="stylesheet">
+        <link href="4.css" rel="stylesheet">
+        <style type="text/css" adt="123"></style>
+        <script src="https://unpkg.com/vue@2.6.14/dist/vue.js"></script>
+    </head>
+
+    <body>
+        <!-- 居中显示 -->
+        <form id="inputform" style="
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);"
+        >
+            请输入你的名字： <input id="input_name" type="text" name="fname" /> <br>
+            请输入你的学号： <input id="input_id"   type="text" name="lname" /> <br>
+            请输入你的学院： <input id="input_xueyuan"   type="text" name="lname" /> <br>
+            请输入你的专业： <input id="input_zhuanye"   type="text" name="lname" /> <br>
+            请输入你的班级： <input id="input_banji"   type="text" name="lname" /> <br>
+            <input id="input_btn" type="button" value="确定" />
+        </form>
+
+        <div style="display:none" id="app" data-v-app="">
+            <div id="app">
+                <div class="page-container" data-v-fae8cc3a="">
+                    <div class="timer" id="dateTime" data-v-fae8cc3a=""></div>
+                    <div class="ex-qrcode center qrcode" width="180" height="180" data-v-544d011e="" data-v-fae8cc3a="">
+                        <!-- <canvas id="myCanvas" data-v-544d011e="" height="120" width="120" style="height: 120px; width: 120px;" > </canvas> -->
+                        <img src="绿码.jpg" alt="code" width="120" height="120">
+                        <!-- <img src="https://img-blog.csdnimg.cn/ec7cf212b35a42ba948a64be5bda4179.jpg?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBATVlNYXJjb3JldXM=,size_9,color_FFFFFF,t_70,g_se,x_16" alt="code" width="120" height="120"> -->
+                    </div>
+                    <div class="van-cell-group__title">外出时间</div>
+                    <div class="van-cell-group van-hairline--top-bottom mg-b">
+                        <div class="van-cell van-cell--large" data-v-fae8cc3a="">
+                            <div class="van-cell__title"> <span>离校时间</span> </div>
+                            <div class="van-cell__value">
+                                <span id="outtime" class="text-black" data-v-fae8cc3a="" style="font-weight: bold;">
+                                    <!-- -->
+                                </span>
+                            </div>
+                        </div>
+                        <div class="van-cell van-cell--large" data-v-fae8cc3a="">
+                            <div class="van-cell__title"> <span>回校时间</span> </div>
+                            <div class="van-cell__value">
+                                <span id="backtime" class="text-black" data-v-fae8cc3a="" style="font-weight: bold;">
+                                    <!-- -->
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="van-cell-group__title">学生信息</div>
+                    <div class="van-cell-group van-hairline--top-bottom">
+                        <div class="van-cell" data-v-fae8cc3a="">
+                            <div class="van-cell__title"><span>姓名</span></div>
+                            <div class="van-cell__value">
+                                <span id="stuname" class="text-black" data-v-fae8cc3a="">
+                                    <font color = "#9c9c9c">
+                                    黄庆烨
+                                    </font>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="van-cell" data-v-fae8cc3a="">
+                            <div class="van-cell__title"><span>学号</span></div>
+                            <div class="van-cell__value">
+                                <span id="stuid" class="text-black" data-v-fae8cc3a="">
+                                    <font color = "#9c9c9c">
+                                        3121009314
+                                    </font>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="van-cell" data-v-fae8cc3a="">
+                            <div class="van-cell__title"><span>学院</span></div>
+                            <div class="van-cell__value">
+                                <span id="stuxy" class="text-black" data-v-fae8cc3a="">
+                                    <font color = "#9c9c9c">
+                                        先进制造学院
+                                    </font>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="van-cell" data-v-fae8cc3a="">
+                            <div class="van-cell__title"><span>专业</span></div>
+                            <div class="van-cell__value">
+                                <span id="stuzy" class="text-black" data-v-fae8cc3a="">
+                                    <font color = "#9c9c9c">
+                                        计算机科学与技术
+                                    </font>
+
+                                </span>
+                            </div>
+                        </div>
+                        <div class="van-cell" data-v-fae8cc3a="">
+                            <div class="van-cell__title"><span>班级</span></div>
+                            <div class="van-cell__value">
+                                <span id="stubj" class="text-black" data-v-fae8cc3a="">
+                                    <font color = "#9c9c9c">
+                                        计算机科学与技术21(6)
+                                    </font>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            Date.prototype.format = function (fmt) {
+                var o = {
+                    "y+": this.getFullYear(), //年
+                    "M+": this.getMonth() + 1, //月份
+                    "d+": this.getDate(), //日
+                    "h+": this.getHours(), //小时
+                    "m+": this.getMinutes(), //分
+                    "s+": this.getSeconds() //秒
+                };
+                if (/(y+)/.test(fmt))
+                    fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+                for (var k in o)
+                    if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+                return fmt;
+            }
+            setInterval("document.getElementById('dateTime').innerHTML = (new Date()).format('yyyy-MM-dd hh:mm:ss');", 1000);
+        </script>
+
+
+
+        <script type="text/javascript">
+            function link_start() {
+                // 获取输入框信息
+                var stuName = document.getElementById('input_name').value;
+                var stuID   = document.getElementById('input_id'  ).value;
+                var stuXY   = document.getElementById('input_xueyuan'  ).value;
+                var stuZY   = document.getElementById('input_zhuanye'  ).value;
+                var stuBJ   = document.getElementById('input_banji'  ).value;
+
+                // 填入信息
+                if(stuName != null && stuName != "")
+                    document.getElementById('stuname' ).innerHTML = "<font color = '#9c9c9c'>" + stuName + "</font>";
+                if(stuID   != null && stuID   != "")
+                    document.getElementById('stuid'   ).innerHTML = "<font color = '#9c9c9c'>" + stuID + "</font>";
+                if(stuXY   != null && stuXY   != "")
+                    document.getElementById('stuxy'   ).innerHTML = "<font color = '#9c9c9c'>" + stuXY + "</font>";
+                if(stuZY   != null && stuZY   != "")
+                    document.getElementById('stuzy'   ).innerHTML = "<font color = '#9c9c9c'>" + stuZY + "</font>";
+                if(stuBJ   != null && stuBJ   != "")
+                    document.getElementById('stubj'   ).innerHTML = "<font color = '#9c9c9c'>" + stuBJ + "</font>";
+
+                // 删除输入框
+                document.getElementById("inputform").style.display="none";
+                document.getElementById("app").style.display="inline";
+            }
+
+            // 添加事件
+            document.getElementById("input_btn").addEventListener("click", link_start);
+
+        </script>
+
+        <script>
+            setTimeout(
+                 function(){
+                    var prevDate = new Date();
+                    var nextDate = new Date();
+                    prevDate.setHours( new Date().getHours() - 1);
+                    nextDate.setHours( new Date().getHours() + 1);
+
+                    prevDate.setMinutes(30);
+                    nextDate.setMinutes(30);
+
+                    prevDate.setSeconds(0);
+                    nextDate.setSeconds(0);
+
+                    var prevDateTxt = prevDate.format('yyyy-MM-dd hh:mm:ss');
+                    var nextDateTxt = nextDate.format('yyyy-MM-dd hh:mm:ss');
+
+                    document.getElementById('outtime' ).innerHTML = prevDateTxt;
+                    document.getElementById('backtime').innerHTML = nextDateTxt;
+                }, 0
+            );
+        </script>
+
+
+    </body>
+</html>
